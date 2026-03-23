@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omkar Udage — Fresher Digital Marketer</title>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+/* ── FONTS (embedded fallback-safe) ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#080b0f;
+  --bg2:#0f1319;
+  --bg3:#161c25;
+  --lime:#c6ff00;
+  --teal:#00d9b0;
+  --rose:#ff3e6c;
+  --txt:#dde4f0;
+  --muted:#5a6880;
+  --br:rgba(198,255,0,0.12);
+  --ff-head:'Bebas Neue','Arial Black',Impact,Arial,sans-serif;
+  --ff-body:'Outfit','Segoe UI','Helvetica Neue',Arial,sans-serif;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:var(--ff-body);
+  overflow-x:hidden;
+}
+
+/* ── PARTICLES ── */
+#pcv{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:16px 5%;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(8,11,15,0);
+  transition:background .4s,padding .3s,border-color .3s;
+  border-bottom:1px solid transparent;
+}
+nav.stuck{
+  background:rgba(8,11,15,.95);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom-color:var(--br);
+  padding:11px 5%;
+}
+.logo{
+  font-family:var(--ff-head);
+  font-size:1.5rem;letter-spacing:2px;
+  color:var(--lime);text-decoration:none;
+}
+.logo em{color:var(--txt);font-style:normal}
+.nav-ul{display:flex;gap:2rem;list-style:none}
+.nav-ul a{
+  color:var(--muted);font-size:.78rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;transition:color .2s;
+  position:relative;
+}
+.nav-ul a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:1.5px;background:var(--lime);
+  transition:width .3s;
+}
+.nav-ul a:hover{color:var(--lime)}
+.nav-ul a:hover::after{width:100%}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 5% 80px;
+  position:relative;z-index:2;
+}
+.hero-orb{
+  position:absolute;border-radius:50%;pointer-events:none;
+}
+.o1{width:600px;height:600px;
+  background:radial-gradient(circle,rgba(198,255,0,.07) 0%,transparent 65%);
+  top:-100px;right:-80px;
+  animation:orb 9s ease-in-out infinite;
+}
+.o2{width:400px;height:400px;
+  background:radial-gradient(circle,rgba(0,217,176,.06) 0%,transparent 65%);
+  bottom:-60px;left:0;
+  animation:orb 12s ease-in-out infinite reverse;
+}
+@keyframes orb{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
+
+.hero-content{max-width:720px;position:relative;z-index:2}
+
+.h-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(198,255,0,.07);
+  border:1px solid rgba(198,255,0,.2);
+  border-radius:100px;padding:7px 18px;
+  font-size:.72rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--lime);margin-bottom:1.8rem;
+}
+.h-badge-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--lime);
+  animation:blink 1.8s ease-in-out infinite;
+}
+@keyframes blink{
+  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(198,255,0,.5)}
+  50%{opacity:.5;box-shadow:0 0 0 7px rgba(198,255,0,0)}
+}
+
+.hero h1{
+  font-family:var(--ff-head);
+  font-size:clamp(3.2rem,9vw,6.5rem);
+  line-height:.95;letter-spacing:1px;
+  margin-bottom:1.8rem;
+}
+.hero h1 .ol{
+  -webkit-text-stroke:1.5px var(--lime);
+  color:transparent;display:block;
+}
+.hero h1 .sl{color:var(--txt);display:block}
+.hero h1 .gl{
+  display:block;
+  background:linear-gradient(120deg,var(--lime) 0%,var(--teal) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  background-size:200%;
+  animation:gshift 4s linear infinite;
+}
+@keyframes gshift{
+  0%{background-position:0%}
+  100%{background-position:200%}
+}
+
+.hero-sub{
+  font-size:1rem;color:var(--muted);
+  line-height:1.8;max-width:500px;
+  margin-bottom:2.2rem;
+}
+.hero-sub strong{color:var(--txt)}
+
+.hero-tags{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-bottom:2.5rem;
+}
+.h-tag{
+  background:var(--bg3);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:5px;padding:6px 13px;
+  font-size:.76rem;color:var(--muted);
+  transition:all .2s;
+}
+.h-tag:hover{border-color:var(--lime);color:var(--lime)}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-l{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--lime);color:var(--bg);
+  font-weight:800;font-size:.88rem;
+  padding:14px 30px;border-radius:5px;
+  text-decoration:none;letter-spacing:.3px;
+  transition:all .25s;
+  box-shadow:0 0 30px rgba(198,255,0,.2);
+}
+.btn-l:hover{
+  background:var(--teal);
+  transform:translateY(-3px);
+  box-shadow:0 0 50px rgba(198,255,0,.35);
+}
+.btn-g{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1.5px solid rgba(255,255,255,.12);
+  color:var(--txt);font-weight:600;font-size:.88rem;
+  padding:14px 30px;border-radius:5px;
+  text-decoration:none;transition:all .25s;
+}
+.btn-g:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-2px)}
+
+/* ── TICKER ── */
+.ticker-wrap{
+  overflow:hidden;background:var(--lime);
+  padding:11px 0;position:relative;z-index:2;
+}
+.ticker-inner{
+  display:flex;white-space:nowrap;
+  animation:tick 20s linear infinite;
+}
+.t-item{
+  font-family:var(--ff-head);
+  font-size:.95rem;letter-spacing:2px;
+  color:var(--bg);padding:0 2rem;opacity:.85;
+}
+.t-sep{opacity:.3;margin:0 .5rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION COMMONS ── */
+.sec{padding:90px 5%;position:relative;z-index:2}
+.sec-alt{background:var(--bg2)}
+.s-label{
+  display:flex;align-items:center;gap:10px;
+  font-size:.7rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--lime);margin-bottom:.6rem;
+}
+.s-label::before{content:'';width:24px;height:1.5px;background:var(--lime)}
+.s-title{
+  font-family:var(--ff-head);
+  font-size:clamp(2rem,5vw,3.5rem);
+  letter-spacing:1px;line-height:1;
+  margin-bottom:.5rem;
+}
+.s-sub{color:var(--muted);font-size:.9rem;margin-bottom:3rem}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--br),transparent);margin:0 5%;position:relative;z-index:2}
+
+/* ── SERVICES ── */
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.2rem;
+}
+.svc-card{
+  background:var(--bg2);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:14px;padding:1.8rem;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.svc-card::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:var(--lime);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s;
+}
+.svc-card:hover{
+  border-color:rgba(198,255,0,.2);
+  transform:translateY(-5px);
+  background:var(--bg3);
+}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-ic{font-size:2rem;display:block;margin-bottom:1rem}
+.svc-card h3{
+  font-family:var(--ff-head);
+  font-size:1.2rem;letter-spacing:.5px;margin-bottom:.5rem;
+}
+.svc-card p{color:var(--muted);font-size:.8rem;line-height:1.7;margin-bottom:1rem}
+.svc-tools{display:flex;flex-wrap:wrap;gap:5px}
+.svc-t{
+  background:rgba(198,255,0,.07);
+  border:1px solid rgba(198,255,0,.12);
+  border-radius:3px;padding:3px 8px;
+  font-size:.62rem;font-weight:700;
+  color:var(--lime);letter-spacing:.5px;text-transform:uppercase;
+}
+
+/* ── WORK ── */
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.w-card{
+  background:var(--bg3);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;overflow:hidden;
+  cursor:pointer;transition:all .3s;
+}
+.w-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 25px 70px rgba(0,0,0,.5);
+  border-color:rgba(198,255,0,.25);
+}
+.w-card:hover .w-overlay{opacity:1}
+.w-card:hover .w-emoji{transform:scale(1.18) rotate(-4deg)}
+.w-card:hover .w-arr{background:var(--lime);color:var(--bg);transform:rotate(45deg)}
+
+.w-thumb{
+  height:200px;display:flex;align-items:center;
+  justify-content:center;position:relative;overflow:hidden;
+}
+.blog-bg{background:linear-gradient(135deg,#0a0018,#240050,#08000f)}
+.insta-bg{background:linear-gradient(135deg,#12002a,#4a007a,#700030)}
+.fb-bg{background:linear-gradient(135deg,#000d30,#001880,#0030a0)}
+.w-grid{
+  position:absolute;inset:0;opacity:.1;
+  background-image:
+    linear-gradient(rgba(198,255,0,.4) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(198,255,0,.4) 1px,transparent 1px);
+  background-size:35px 35px;
+}
+.w-emoji{
+  font-size:3.5rem;position:relative;z-index:2;
+  transition:transform .3s;
+  filter:drop-shadow(0 0 25px rgba(255,255,255,.25));
+}
+.w-overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;transition:opacity .3s;
+  display:flex;align-items:center;justify-content:center;z-index:3;
+}
+.w-peek{
+  background:var(--lime);color:var(--bg);
+  font-size:.75rem;font-weight:800;
+  padding:9px 22px;border-radius:3px;
+  letter-spacing:1px;text-transform:uppercase;
+}
+.w-body{padding:1.4rem;background:var(--bg3)}
+.w-cat{
+  font-size:.62rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--lime);margin-bottom:.4rem;
+}
+.w-body h3{
+  font-family:var(--ff-head);
+  font-size:1.15rem;letter-spacing:.5px;margin-bottom:.4rem;
+}
+.w-body p{color:var(--muted);font-size:.8rem;line-height:1.65;margin-bottom:.9rem}
+.w-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.9rem}
+.w-tag{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:3px;padding:3px 8px;
+  font-size:.62rem;color:var(--muted);
+}
+.w-foot{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding-top:.8rem;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.w-foot-l{font-size:.68rem;color:var(--muted)}
+.w-arr{
+  width:30px;height:30px;border-radius:50%;
+  border:1px solid rgba(198,255,0,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:var(--lime);
+  transition:all .3s;
+}
+
+/* ── MODAL ── */
+.mo-bg{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.88);
+  z-index:3000;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.mo-bg.show{opacity:1;pointer-events:all}
+.mo-box{
+  background:var(--bg2);
+  border:1px solid rgba(198,255,0,.15);
+  border-radius:20px;
+  max-width:600px;width:100%;
+  max-height:88vh;overflow-y:auto;
+  transform:scale(.93) translateY(18px);
+  transition:transform .38s cubic-bezier(.34,1.56,.64,1);
+  position:relative;
+}
+.mo-bg.show .mo-box{transform:scale(1) translateY(0)}
+.mo-x{
+  position:absolute;top:14px;right:14px;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--muted);
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;transition:all .2s;z-index:10;
+}
+.mo-x:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+
+.mo-thumb{
+  height:190px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:12px 12px 0 0;
+  position:relative;overflow:hidden;
+  font-size:3.5rem;
+}
+.mo-head{padding:1.8rem 1.8rem .5rem}
+.mo-cat{
+  font-size:.62rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--lime);margin-bottom:.4rem;
+}
+.mo-title{
+  font-family:var(--ff-head);
+  font-size:1.7rem;letter-spacing:1px;
+}
+.mo-body{padding:0 1.8rem 1.8rem}
+.mo-desc{
+  color:var(--muted);font-size:.88rem;
+  line-height:1.85;margin:1rem 0 1.4rem;
+}
+.mo-kpis{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:.7rem;margin-bottom:1.4rem;
+}
+.mo-kpi{
+  background:var(--bg3);
+  border:1px solid rgba(198,255,0,.08);
+  border-radius:8px;padding:12px;text-align:center;
+}
+.mo-kpi-n{
+  font-family:var(--ff-head);
+  font-size:1.4rem;color:var(--lime);
+  display:block;line-height:1;
+}
+.mo-kpi-l{
+  font-size:.58rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1px;margin-top:3px;
+}
+.mo-feats h4{
+  font-family:var(--ff-head);
+  font-size:.95rem;letter-spacing:1px;
+  color:var(--txt);margin-bottom:.8rem;
+}
+.mo-feat{
+  display:flex;gap:8px;align-items:flex-start;
+  font-size:.82rem;color:var(--muted);
+  margin-bottom:.55rem;line-height:1.65;
+}
+.mo-feat::before{
+  content:'→';color:var(--lime);
+  flex-shrink:0;font-weight:700;
+}
+.mo-acts{
+  display:flex;gap:.8rem;margin-top:1.5rem;flex-wrap:wrap;
+}
+.mo-btn{
+  flex:1;display:flex;align-items:center;
+  justify-content:center;gap:6px;
+  padding:13px 16px;border-radius:6px;
+  font-size:.84rem;font-weight:700;
+  text-decoration:none;transition:all .2s;
+  text-align:center;
+}
+.mo-btn.p{background:var(--lime);color:var(--bg)}
+.mo-btn.p:hover{background:var(--teal);transform:translateY(-2px)}
+.mo-btn.s{border:1.5px solid rgba(255,255,255,.12);color:var(--txt)}
+.mo-btn.s:hover{border-color:var(--lime);color:var(--lime)}
+
+/* ── SKILLS ── */
+.skills-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3.5rem;margin-top:3rem;align-items:start;
+}
+.sk-list{display:flex;flex-direction:column;gap:1.1rem}
+.sk-row-head{
+  display:flex;justify-content:space-between;
+  margin-bottom:5px;
+}
+.sk-name{font-size:.86rem;font-weight:600;color:var(--txt)}
+.sk-pct{
+  font-family:var(--ff-head);
+  font-size:.95rem;color:var(--lime);letter-spacing:1px;
+}
+.sk-track{
+  height:4px;background:rgba(255,255,255,.06);
+  border-radius:4px;overflow:hidden;
+}
+.sk-fill{
+  height:100%;border-radius:4px;
+  background:linear-gradient(90deg,var(--lime),var(--teal));
+  width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1);
+}
+
+.tools-wrap h3{
+  font-family:var(--ff-head);
+  font-size:1.4rem;letter-spacing:1px;
+  margin-bottom:1.2rem;
+}
+.tools-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;
+}
+.t-chip{
+  background:var(--bg3);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:8px;padding:12px 14px;
+  display:flex;align-items:center;gap:9px;
+  transition:all .3s;
+}
+.t-chip:hover{
+  border-color:rgba(198,255,0,.25);
+  background:rgba(198,255,0,.04);
+}
+.t-ic{font-size:1.1rem;flex-shrink:0}
+.t-n{font-size:.8rem;font-weight:600;color:var(--txt)}
+.t-l{font-size:.66rem;color:var(--muted)}
+
+/* ── ABOUT ── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3.5rem;align-items:center;
+}
+.ab-p{
+  color:var(--muted);font-size:.94rem;
+  line-height:1.85;margin-bottom:1rem;
+}
+.ab-p strong{color:var(--txt)}
+.ab-info{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.7rem;margin-top:1.5rem;
+}
+.ab-chip{
+  background:var(--bg3);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:8px;padding:11px 14px;
+  transition:border-color .2s;
+}
+.ab-chip:hover{border-color:var(--lime)}
+.ab-chip-l{
+  font-size:.6rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;
+}
+.ab-chip-v{font-size:.82rem;font-weight:600;color:var(--txt)}
+.ab-quote{
+  background:var(--bg3);
+  border:1px solid var(--br);
+  border-radius:14px;padding:2rem;
+  position:relative;
+}
+.ab-quote-mark{
+  font-family:var(--ff-head);
+  font-size:5rem;color:var(--lime);opacity:.12;
+  position:absolute;top:-5px;left:16px;line-height:1;
+}
+.ab-quote p{
+  font-size:1rem;font-weight:500;
+  line-height:1.75;color:var(--txt);
+  position:relative;z-index:1;
+}
+.ab-attr{
+  font-size:.72rem;color:var(--muted);
+  margin-top:1rem;display:flex;align-items:center;gap:8px;
+}
+.ab-attr::before{content:'';width:18px;height:1px;background:var(--muted)}
+
+/* ── CONTACT ── */
+.contact-inner{max-width:600px;margin:0 auto;text-align:center}
+.contact-h{
+  font-family:var(--ff-head);
+  font-size:clamp(3rem,8vw,5.5rem);
+  letter-spacing:1px;line-height:.95;
+  margin-bottom:1.2rem;
+}
+.contact-h .ol{
+  -webkit-text-stroke:1.5px var(--lime);
+  color:transparent;
+}
+.contact-sub{
+  color:var(--muted);font-size:.92rem;
+  line-height:1.75;margin-bottom:2.5rem;
+}
+.contact-links{
+  display:flex;flex-wrap:wrap;gap:.8rem;
+  justify-content:center;
+}
+.c-link{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg2);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;padding:13px 20px;
+  text-decoration:none;color:var(--txt);
+  font-size:.84rem;font-weight:500;
+  transition:all .25s;
+}
+.c-link:hover{
+  border-color:var(--lime);color:var(--lime);
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(198,255,0,.1);
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:28px 5%;
+  border-top:1px solid rgba(255,255,255,.06);
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+  position:relative;z-index:2;
+}
+.foot-l{
+  font-family:var(--ff-head);
+  font-size:1.1rem;letter-spacing:2px;color:var(--lime);
+}
+.foot-l em{color:var(--muted);font-style:normal}
+.foot-r{font-size:.7rem;color:var(--muted);opacity:.45}
+
+/* ── SCROLL REVEAL ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.on{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-28px);transition:opacity .65s ease,transform .65s ease}
+.rv-l.on{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease}
+.rv-r.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}
+.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .svc-grid,.work-grid{grid-template-columns:1fr 1fr}
+  .skills-grid,.about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .mo-kpis{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .nav-ul{display:none}
+  .hero h1{font-size:3rem}
+  .svc-grid,.work-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:1fr}
+  .ab-info{grid-template-columns:1fr}
+  .mo-kpis{grid-template-columns:1fr}
+  .contact-links{flex-direction:column;align-items:stretch}
+  .c-link{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<canvas id="pcv"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">OU<em>.</em></a>
+  <ul class="nav-ul">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-content">
+    <div class="h-badge"><span class="h-badge-dot"></span>Fresher Digital Marketer</div>
+    <h1>
+      <span class="ol">DIGITAL</span>
+      <span class="sl">MARKETING</span>
+      <span class="gl">CREATOR</span>
+    </h1>
+    <p class="hero-sub">
+      I'm <strong>Omkar Udage</strong> from Ulhasnagar — a passionate fresher in digital marketing who creates content, manages social media and builds brand presence online.
+    </p>
+    <div class="hero-tags">
+      <span class="h-tag">📝 Blog Creator</span>
+      <span class="h-tag">📸 Instagram Manager</span>
+      <span class="h-tag">🎨 Canva Designer</span>
+      <span class="h-tag">🎬 OTT Content</span>
+      <span class="h-tag">🤖 AI Tools</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#work" class="btn-l">View My Work ↓</a>
+      <a href="#contact" class="btn-g">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="t-item">SOCIAL MEDIA MANAGEMENT<span class="t-sep">✦</span></span>
+    <span class="t-item">CONTENT CREATION<span class="t-sep">✦</span></span>
+    <span class="t-item">BLOG MANAGEMENT<span class="t-sep">✦</span></span>
+    <span class="t-item">CANVA DESIGN<span class="t-sep">✦</span></span>
+    <span class="t-item">OTT MARKETING<span class="t-sep">✦</span></span>
+    <span class="t-item">AI TOOLS<span class="t-sep">✦</span></span>
+    <span class="t-item">COMMUNITY GROWTH<span class="t-sep">✦</span></span>
+    <span class="t-item">DIGITAL STRATEGY<span class="t-sep">✦</span></span>
+    <span class="t-item">SOCIAL MEDIA MANAGEMENT<span class="t-sep">✦</span></span>
+    <span class="t-item">CONTENT CREATION<span class="t-sep">✦</span></span>
+    <span class="t-item">BLOG MANAGEMENT<span class="t-sep">✦</span></span>
+    <span class="t-item">CANVA DESIGN<span class="t-sep">✦</span></span>
+    <span class="t-item">OTT MARKETING<span class="t-sep">✦</span></span>
+    <span class="t-item">AI TOOLS<span class="t-sep">✦</span></span>
+    <span class="t-item">COMMUNITY GROWTH<span class="t-sep">✦</span></span>
+    <span class="t-item">DIGITAL STRATEGY<span class="t-sep">✦</span></span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="rv"><div class="s-label">What I Offer</div><div class="s-title">MY SERVICES</div><p class="s-sub">Digital marketing services I provide as a fresher</p></div>
+  <div class="svc-grid">
+    <div class="svc-card rv d1"><span class="svc-ic">📱</span><h3>Social Media Management</h3><p>Full management of Instagram & Facebook — content, reels, stories, captions and community engagement for organic growth.</p><div class="svc-tools"><span class="svc-t">Instagram</span><span class="svc-t">Facebook</span><span class="svc-t">Reels</span></div></div>
+    <div class="svc-card rv d2"><span class="svc-ic">✍️</span><h3>Blog & Content Writing</h3><p>SEO-optimized articles, movie reviews and entertainment content that drives traffic and keeps readers coming back.</p><div class="svc-tools"><span class="svc-t">Blogger</span><span class="svc-t">SEO</span><span class="svc-t">Writing</span></div></div>
+    <div class="svc-card rv d3"><span class="svc-ic">🎨</span><h3>Canva Graphic Design</h3><p>Designing scroll-stopping visuals — post creatives, banners, story graphics and branded templates using Canva.</p><div class="svc-tools"><span class="svc-t">Canva</span><span class="svc-t">Creatives</span><span class="svc-t">Branding</span></div></div>
+    <div class="svc-card rv d1"><span class="svc-ic">📊</span><h3>Content Strategy</h3><p>Planning content calendars, finding trending topics and creating strategies that grow brand presence and audience.</p><div class="svc-tools"><span class="svc-t">Planning</span><span class="svc-t">Trends</span><span class="svc-t">Analytics</span></div></div>
+    <div class="svc-card rv d2"><span class="svc-ic">🎬</span><h3>OTT & Entertainment</h3><p>Specialized marketing for OTT platforms — promoting shows, movies and streaming content to niche audiences.</p><div class="svc-tools"><span class="svc-t">OTT</span><span class="svc-t">Bollywood</span><span class="svc-t">Entertainment</span></div></div>
+    <div class="svc-card rv d3"><span class="svc-ic">🤖</span><h3>AI-Assisted Marketing</h3><p>Using AI tools like ChatGPT, Gemini, Claude & Perplexity to create better content faster and smarter.</p><div class="svc-tools"><span class="svc-t">ChatGPT</span><span class="svc-t">Gemini</span><span class="svc-t">Claude</span></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORK -->
+<section class="sec sec-alt" id="work">
+  <div class="rv"><div class="s-label">Portfolio</div><div class="s-title">MY WORK</div><p class="s-sub">Click any card to see full details and visit links</p></div>
+  <div class="work-grid">
+
+    <div class="w-card rv d1" onclick="showMo('blog')">
+      <div class="w-thumb blog-bg"><div class="w-grid"></div><span class="w-emoji">🎬</span><div class="w-overlay"><div class="w-peek">View Details</div></div></div>
+      <div class="w-body">
+        <div class="w-cat">Blog · Content Writing · SEO</div>
+        <h3>FilmyJunction Movies Blog</h3>
+        <p>Bollywood entertainment blog — movie news, reviews & OTT updates. Self-created and managed.</p>
+        <div class="w-tags"><span class="w-tag">Blogger</span><span class="w-tag">SEO</span><span class="w-tag">Content</span><span class="w-tag">Bollywood</span></div>
+        <div class="w-foot"><span class="w-foot-l">Self-managed · Active</span><div class="w-arr">↗</div></div>
+      </div>
+    </div>
+
+    <div class="w-card rv d2" onclick="showMo('insta')">
+      <div class="w-thumb insta-bg"><div class="w-grid"></div><span class="w-emoji">📸</span><div class="w-overlay"><div class="w-peek">View Details</div></div></div>
+      <div class="w-body">
+        <div class="w-cat">Instagram · Reels · OTT Content</div>
+        <h3>StreamEasy OTT — Instagram</h3>
+        <p>Full Instagram management for OTT brand — reels, posts, stories, creatives & engagement.</p>
+        <div class="w-tags"><span class="w-tag">Instagram</span><span class="w-tag">Reels</span><span class="w-tag">OTT</span><span class="w-tag">Canva</span></div>
+        <div class="w-foot"><span class="w-foot-l">@streameasy.ott · Active</span><div class="w-arr">↗</div></div>
+      </div>
+    </div>
+
+    <div class="w-card rv d3" onclick="showMo('fb')">
+      <div class="w-thumb fb-bg"><div class="w-grid"></div><span class="w-emoji">👥</span><div class="w-overlay"><div class="w-peek">View Details</div></div></div>
+      <div class="w-body">
+        <div class="w-cat">Facebook · Community · Strategy</div>
+        <h3>StreamEasy — Facebook Page</h3>
+        <p>Facebook page management — content, branded creatives, community building & organic growth.</p>
+        <div class="w-tags"><span class="w-tag">Facebook</span><span class="w-tag">Community</span><span class="w-tag">Strategy</span><span class="w-tag">Growth</span></div>
+        <div class="w-foot"><span class="w-foot-l">StreamEasy · Active</span><div class="w-arr">↗</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL: BLOG -->
+<div class="mo-bg" id="mo-blog">
+  <div class="mo-box">
+    <button class="mo-x" onclick="hideMo('blog')">✕</button>
+    <div class="mo-thumb blog-bg"><div class="w-grid"></div><span style="font-size:3.2rem;position:relative;z-index:2;filter:drop-shadow(0 0 20px rgba(255,255,255,.25))">🎬</span></div>
+    <div class="mo-head">
+      <div class="mo-cat">Blog Management · SEO · Content Writing</div>
+      <div class="mo-title">FilmyJunction Movies Blog</div>
+    </div>
+    <div class="mo-body">
+      <p class="mo-desc">FilmyJunction is a Bollywood entertainment blog I independently created and manage. It covers latest movie news, reviews, OTT releases and entertainment updates. I handle everything — writing, SEO, thumbnail design and publishing.</p>
+      <div class="mo-kpis">
+        <div class="mo-kpi"><span class="mo-kpi-n">100%</span><div class="mo-kpi-l">Self Run</div></div>
+        <div class="mo-kpi"><span class="mo-kpi-n">Blogger</span><div class="mo-kpi-l">Platform</div></div>
+        <div class="mo-kpi"><span class="mo-kpi-n">Active</span><div class="mo-kpi-l">Status</div></div>
+      </div>
+      <div class="mo-feats">
+        <h4>What I Do Here:</h4>
+        <div class="mo-feat">Writing SEO-optimized Bollywood movie reviews & entertainment news articles</div>
+        <div class="mo-feat">Designing blog thumbnails and cover images using Canva</div>
+        <div class="mo-feat">Keyword research and on-page SEO to drive organic traffic</div>
+        <div class="mo-feat">Consistent publishing schedule to retain and grow readership</div>
+        <div class="mo-feat">Managing all backend settings on Blogger platform</div>
+      </div>
+      <div class="mo-acts">
+        <a href="https://filmyjunctionmovies.blogspot.com" target="_blank" class="mo-btn p">🌐 Visit Blog →</a>
+        <a href="mailto:omkarudage3636@gmail.com" class="mo-btn s">📧 Contact Me</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: INSTAGRAM -->
+<div class="mo-bg" id="mo-insta">
+  <div class="mo-box">
+    <button class="mo-x" onclick="hideMo('insta')">✕</button>
+    <div class="mo-thumb insta-bg"><div class="w-grid"></div><span style="font-size:3.2rem;position:relative;z-index:2;filter:drop-shadow(0 0 20px rgba(255,255,255,.25))">📸</span></div>
+    <div class="mo-head">
+      <div class="mo-cat">Instagram Management · Reels · OTT Content</div>
+      <div class="mo-title">StreamEasy OTT — Instagram</div>
+    </div>
+    <div class="mo-body">
+      <p class="mo-desc">I manage the complete Instagram presence for StreamEasy OTT — an entertainment streaming brand. I handle the full content cycle: strategy, creation, design, posting and community engagement to drive follower growth.</p>
+      <div class="mo-kpis">
+        <div class="mo-kpi"><span class="mo-kpi-n">📱</span><div class="mo-kpi-l">Instagram</div></div>
+        <div class="mo-kpi"><span class="mo-kpi-n">OTT</span><div class="mo-kpi-l">Niche</div></div>
+        <div class="mo-kpi"><span class="mo-kpi-n">Active</span><div class="mo-kpi-l">Status</div></div>
+      </div>
+      <div class="mo-feats">
+        <h4>What I Do Here:</h4>
+        <div class="mo-feat">Creating and scheduling daily Reels, Posts and Stories for maximum engagement</div>
+        <div class="mo-feat">Designing all branded creatives and visuals using Canva</div>
+        <div class="mo-feat">Writing compelling captions with strategic hashtags for organic reach</div>
+        <div class="mo-feat">Community management — responding to DMs, comments and story replies</div>
+        <div class="mo-feat">Promoting OTT shows and movie releases to grow audience</div>
+      </div>
+      <div class="mo-acts">
+        <a href="https://www.instagram.com/streameasy.ott" target="_blank" class="mo-btn p">📸 Visit Instagram →</a>
+        <a href="mailto:omkarudage3636@gmail.com" class="mo-btn s">📧 Contact Me</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: FACEBOOK -->
+<div class="mo-bg" id="mo-fb">
+  <div class="mo-box">
+    <button class="mo-x" onclick="hideMo('fb')">✕</button>
+    <div class="mo-thumb fb-bg"><div class="w-grid"></div><span style="font-size:3.2rem;position:relative;z-index:2;filter:drop-shadow(0 0 20px rgba(255,255,255,.25))">👥</span></div>
+    <div class="mo-head">
+      <div class="mo-cat">Facebook Management · Community · Content Strategy</div>
+      <div class="mo-title">StreamEasy — Facebook Page</div>
+    </div>
+    <div class="mo-body">
+      <p class="mo-desc">I manage the StreamEasy Facebook page end-to-end — creating branded content, building community, growing organic page reach and maintaining consistent engagement with fresh entertainment content.</p>
+      <div class="mo-kpis">
+        <div class="mo-kpi"><span class="mo-kpi-n">👥</span><div class="mo-kpi-l">Facebook</div></div>
+        <div class="mo-kpi"><span class="mo-kpi-n">OTT</span><div class="mo-kpi-l">Niche</div></div>
+        <div class="mo-kpi"><span class="mo-kpi-n">Active</span><div class="mo-kpi-l">Status</div></div>
+      </div>
+      <div class="mo-feats">
+        <h4>What I Do Here:</h4>
+        <div class="mo-feat">Regular posting with engaging OTT and Bollywood content</div>
+        <div class="mo-feat">Designing all branded post creatives and cover images in Canva</div>
+        <div class="mo-feat">Community management — comments, messages and interactions</div>
+        <div class="mo-feat">Growing page likes and reach through organic content strategy</div>
+        <div class="mo-feat">Cross-promoting content between Instagram and Facebook</div>
+      </div>
+      <div class="mo-acts">
+        <a href="https://www.facebook.com/share/19GYrGKuFW/" target="_blank" class="mo-btn p">👥 Visit Facebook →</a>
+        <a href="mailto:omkarudage3636@gmail.com" class="mo-btn s">📧 Contact Me</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="rv"><div class="s-label">Expertise</div><div class="s-title">SKILLS & TOOLS</div><p class="s-sub">What I bring to every digital marketing project</p></div>
+  <div class="skills-grid">
+    <div class="sk-list rv-l">
+      <div><div class="sk-row-head"><span class="sk-name">Social Media Management</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+      <div><div class="sk-row-head"><span class="sk-name">Content Writing & Blogging</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-fill" data-w="78"></div></div></div>
+      <div><div class="sk-row-head"><span class="sk-name">Canva Graphic Design</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div></div>
+      <div><div class="sk-row-head"><span class="sk-name">Communication</span><span class="sk-pct">90%</span></div><div class="sk-track"><div class="sk-fill" data-w="90"></div></div></div>
+      <div><div class="sk-row-head"><span class="sk-name">Content Strategy</span><span class="sk-pct">75%</span></div><div class="sk-track"><div class="sk-fill" data-w="75"></div></div></div>
+      <div><div class="sk-row-head"><span class="sk-name">SEO Basics</span><span class="sk-pct">70%</span></div><div class="sk-track"><div class="sk-fill" data-w="70"></div></div></div>
+      <div><div class="sk-row-head"><span class="sk-name">Community Management</span><span class="sk-pct">82%</span></div><div class="sk-track"><div class="sk-fill" data-w="82"></div></div></div>
+    </div>
+    <div class="tools-wrap rv-r">
+      <h3>Tools & Platforms</h3>
+      <div class="tools-grid">
+        <div class="t-chip"><span class="t-ic">🎨</span><div><div class="t-n">Canva</div><div class="t-l">Graphic Design</div></div></div>
+        <div class="t-chip"><span class="t-ic">📸</span><div><div class="t-n">Instagram</div><div class="t-l">Social Media</div></div></div>
+        <div class="t-chip"><span class="t-ic">👥</span><div><div class="t-n">Facebook</div><div class="t-l">Page Management</div></div></div>
+        <div class="t-chip"><span class="t-ic">📝</span><div><div class="t-n">Blogger</div><div class="t-l">Blog Platform</div></div></div>
+        <div class="t-chip"><span class="t-ic">🌐</span><div><div class="t-n">WordPress</div><div class="t-l">Website / Blog</div></div></div>
+        <div class="t-chip"><span class="t-ic">📊</span><div><div class="t-n">MS Office</div><div class="t-l">Word, Excel, PPT</div></div></div>
+        <div class="t-chip"><span class="t-ic">🤖</span><div><div class="t-n">ChatGPT</div><div class="t-l">AI Content Tool</div></div></div>
+        <div class="t-chip"><span class="t-ic">💎</span><div><div class="t-n">Gemini</div><div class="t-l">Google AI Tool</div></div></div>
+        <div class="t-chip"><span class="t-ic">🧠</span><div><div class="t-n">Claude</div><div class="t-l">AI Assistant</div></div></div>
+        <div class="t-chip"><span class="t-ic">🔎</span><div><div class="t-n">Perplexity</div><div class="t-l">AI Search</div></div></div>
+        <div class="t-chip"><span class="t-ic">⚡</span><div><div class="t-n">Grok</div><div class="t-l">AI Assistant</div></div></div>
+        <div class="t-chip"><span class="t-ic">💜</span><div><div class="t-n">Lovable</div><div class="t-l">AI Web Builder</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="sec sec-alt" id="about">
+  <div class="rv"><div class="s-label">About Me</div><div class="s-title">WHO I AM</div></div>
+  <div class="about-grid" style="margin-top:2.5rem">
+    <div class="rv-l">
+      <p class="ab-p">I'm <strong>Omkar Rameshwar Udage</strong>, a Commerce graduate from Ulhasnagar with a passion for digital marketing, content creation and brand building online.</p>
+      <p class="ab-p">I handle real projects — managing Instagram & Facebook pages for OTT brands and running my own Bollywood blog. Every post, reel and article is aimed at real engagement and growth.</p>
+      <p class="ab-p">As a fresher, I bring <strong>energy, creativity and a modern approach</strong> to digital marketing — always learning and always improving.</p>
+      <div class="ab-info">
+        <div class="ab-chip"><div class="ab-chip-l">📍 Location</div><div class="ab-chip-v">Ulhasnagar 4, MH</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">🎓 Education</div><div class="ab-chip-v">B.Com Graduate</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">📞 Phone</div><div class="ab-chip-v">9324880138</div></div>
+        <div class="ab-chip"><div class="ab-chip-l">💼 Status</div><div class="ab-chip-v">Open to Work ✅</div></div>
+      </div>
+    </div>
+    <div class="rv-r">
+      <div class="ab-quote">
+        <div class="ab-quote-mark">"</div>
+        <p>Great content doesn't just look good — it builds communities, drives action and creates lasting brand identity in the digital world.</p>
+        <div class="ab-attr">Omkar Udage · Fresher Digital Marketer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="contact-inner">
+    <div class="rv"><div class="s-label" style="justify-content:center">Get in Touch</div></div>
+    <div class="contact-h rv d1">GET IN<br><span class="ol">TOUCH</span></div>
+    <p class="contact-sub rv d2">Open to Digital Marketing, Social Media Management and Content Creation opportunities. Let's connect!</p>
+    <div class="contact-links rv d3">
+      <a href="tel:9324880138" class="c-link"><span>📞</span>9324880138</a>
+      <a href="mailto:omkarudage3636@gmail.com" class="c-link"><span>✉️</span>omkarudage3636@gmail.com</a>
+      <a href="https://www.instagram.com/streameasy.ott" target="_blank" class="c-link"><span>📸</span>@streameasy.ott</a>
+      <a href="https://www.facebook.com/share/19GYrGKuFW/" target="_blank" class="c-link"><span>👥</span>Facebook Page</a>
+      <a href="https://filmyjunctionmovies.blogspot.com" target="_blank" class="c-link"><span>📝</span>FilmyJunction Blog</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-l">OU<em> · FRESHER DIGITAL MARKETER</em></div>
+  <div class="foot-r">© 2025 Omkar Rameshwar Udage · Ulhasnagar</div>
+</footer>
+
+<script>
+// ── PARTICLES ──
+(function(){
+  var cv=document.getElementById('pcv'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function sz(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+  sz();window.addEventListener('resize',sz);
+  for(var i=0;i<60;i++) pts.push({
+    x:Math.random()*innerWidth, y:Math.random()*innerHeight,
+    vx:(Math.random()-.5)*.18, vy:(Math.random()-.5)*.18,
+    r:Math.random()*.9+.3
+  });
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1;
+      if(p.y<0||p.y>H) p.vy*=-1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(198,255,0,.25)'; ctx.fill();
+    }
+    for(var i=0;i<pts.length;i++) for(var j=i+1;j<pts.length;j++){
+      var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y,
+          d=Math.sqrt(dx*dx+dy*dy);
+      if(d<110){
+        ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y);
+        ctx.lineTo(pts[j].x,pts[j].y);
+        ctx.strokeStyle='rgba(198,255,0,'+(0.07*(1-d/110))+')';
+        ctx.lineWidth=.5; ctx.stroke();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── NAV ──
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('stuck',scrollY>50);
+});
+
+// ── SCROLL REVEAL ──
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('on');
+      e.target.querySelectorAll('.sk-fill').forEach(function(b){
+        b.style.width=b.getAttribute('data-w')+'%';
+      });
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(function(el){obs.observe(el)});
+
+// ── MODAL ──
+function showMo(id){
+  document.getElementById('mo-'+id).classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function hideMo(id){
+  document.getElementById('mo-'+id).classList.remove('show');
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.mo-bg').forEach(function(m){
+  m.addEventListener('click',function(e){
+    if(e.target===m){ m.classList.remove('show'); document.body.style.overflow=''; }
+  });
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    document.querySelectorAll('.mo-bg.show').forEach(function(m){ m.classList.remove('show'); });
+    document.body.style.overflow='';
+  }
+});
+</script>
+</body>
+</html>
